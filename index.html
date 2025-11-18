@@ -1,1 +1,319 @@
-HELLO WORLD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Civic Concert Band</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #0f172a; /* Deep Navy */
+            --secondary-color: #1e293b; /* Lighter Navy */
+            --accent-color: #d4af37; /* Metallic Gold */
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: rgba(15, 23, 42, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .cta-btn {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .cta-btn:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), 
+                        url('https://images.unsplash.com/photo-1465847899078-b413929f7120?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .hero-btn {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            font-weight: bold;
+            border-radius: 4px;
+            font-size: 1.1rem;
+        }
+
+        /* --- SECTIONS GENERAL --- */
+        section {
+            padding: 5rem 10%;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-color);
+        }
+
+        /* --- UPCOMING EVENTS --- */
+        .events-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background-color: var(--secondary-color);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .date-badge {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .event-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+        }
+
+        .event-location {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 10px 10px 0px var(--accent-color);
+        }
+
+        /* --- JOIN US / RECRUITMENT --- */
+        .join-us {
+            background-color: var(--secondary-color);
+            text-align: center;
+        }
+
+        .instrument-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tag {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #020617;
+            text-align: center;
+            padding: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            nav { flex-direction: column; gap: 1rem; padding: 1rem; }
+            .nav-links { gap: 1rem; font-size: 0.9rem; }
+            .about-image { display: none; } /* Hide image on small screens for simplicity */
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">CIVIC SYMPHONY</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#events">Concerts</a></li>
+            <li><a href="#join">Join Us</a></li>
+        </ul>
+        <a href="#tickets" class="cta-btn">Buy Tickets</a>
+    </nav>
+
+    <header id="home" class="hero">
+        <h1>Music for the Community</h1>
+        <p>Bringing classical, pop, and contemporary wind ensemble music to the heart of the city since 1985.</p>
+        <a href="#events" class="hero-btn">See Upcoming Season</a>
+    </header>
+
+    <section id="events">
+        <h2 class="section-title">2025 Concert Season</h2>
+        <div class="events-container">
+            <div class="event-card">
+                <span class="date-badge">Oct 15 • 7:30 PM</span>
+                <h3>Autumn Winds</h3>
+                <p class="event-location">Grand City Hall Auditorium</p>
+                <p>Featuring works by Holst, Grainger, and a tribute to film scores.</p>
+            </div>
+
+            <div class="event-card">
+                <span class="date-badge">Dec 10 • 7:00 PM</span>
+                <h3>Holiday Spectacular</h3>
+                <p class="event-location">St. Mark's Cathedral</p>
+                <p>Our annual festive favorite featuring the Community Choir.</p>
+            </div>
+
+            <div class="event-card">
+                <span class="date-badge">Mar 22 • 6:00 PM</span>
+                <h3>Spring Gala</h3>
+                <p class="event-location">Outdoor Pavilion</p>
+                <p>A lighthearted evening of marches and jazz standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" style="background-color: var(--primary-color);">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2 class="section-title" style="text-align: left;">About the Ensemble</h2>
+                <p>The Civic Symphony Concert Band is a 60-member volunteer ensemble comprised of musicians from all walks of life. From music teachers to engineers, we are united by our passion for wind band literature.</p>
+                <p>Under the direction of Maestro John Doe, we perform four major concerts a year, dedicated to preserving the rich history of the concert band tradition while exploring modern compositions.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1511192336575-5a79af67a629?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Concert Band Performing">
+            </div>
+        </div>
+    </section>
+
+    [attachment_0](attachment)
+
+    <section id="join" class="join-us">
+        <h2 class="section-title">We Are Auditioning!</h2>
+        <p style="max-width: 600px; margin: 0 auto 2rem auto; color: var(--text-muted);">
+            We are currently looking to fill specific seats for our upcoming season. Rehearsals are held every Tuesday at 7:00 PM.
+        </p>
+        <h3>Current Openings:</h3>
+        <div class="instrument-list">
+            <span class="tag">Oboe</span>
+            <span class="tag">Bassoon</span>
+            <span class="tag">French Horn</span>
+            <span class="tag">Percussion</span>
+        </div>
+        <br><br>
+        <a href="mailto:director@bandemail.com" class="cta-btn">Request Audition Info</a>
+    </section>
+
+    <footer>
+        <div class="logo" style="margin-bottom: 1rem;">CIVIC SYMPHONY</div>
+        <p>123 Music Avenue, City Center, ST 12345</p>
+        <p>&copy; 2025 Civic Concert Band. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
+
